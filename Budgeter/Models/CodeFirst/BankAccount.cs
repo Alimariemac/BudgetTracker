@@ -5,9 +5,9 @@ using System.Web;
 
 namespace Budgeter.Models.CodeFirst
 {
-    public class Account
+    public class BankAccount
     {
-        public Account()
+        public BankAccount()
         {
             this.Transactions = new HashSet<Transaction>();
         }

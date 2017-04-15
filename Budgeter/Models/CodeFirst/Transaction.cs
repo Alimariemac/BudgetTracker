@@ -17,10 +17,10 @@ namespace Budgeter.Models
         public decimal ReconciledAmount { get; set; }
 
         public int CategoryId { get; set; }
-        public int CreatorUserId { get; set; }
+        //public int CreatorUserId { get; set; }
 
         public virtual Category Category { get; set; }
-        public virtual ApplicationUser CreatorUser { get; set; }
+        //public virtual ApplicationUser CreatorUser { get; set; }
 
     }
 }

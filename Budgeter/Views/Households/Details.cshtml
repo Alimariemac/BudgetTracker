@@ -1,0 +1,78 @@
+﻿@model Budgeter.Models.CodeFirst.Household
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Household</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+           Bank Accounts 
+        </dt>
+
+        <dd>
+            @if (Model.BankAccounts.Count != 0)
+            {
+                foreach (var acc in Model.BankAccounts)
+                {
+                    <a href="@Url.Action("Details", "BankAccounts", new {id=acc.Id })"><p>@acc.Name</p></a>
+                }
+            }
+            else
+            {
+                <p>No Bank Accounts Associated</p>
+            }
+            
+        </dd>
+        <dt>
+            Budgets
+        </dt>
+
+        <dd>
+            @if (Model.Budgets.Count != 0)
+            {
+                foreach (var bud in Model.Budgets)
+                {
+                <a href="@Url.Action("Details", "Budgets", new {id=bud.Id })"><p>@bud.Name</p></a>
+                }
+            }
+            else
+            {
+                <p>No Budgets Created!</p>
+            }
+            
+        </dd>
+        <dt>
+            Household Members
+        </dt>
+
+        <dd>
+            @if (Model.Users.Count != 0)
+            {
+                foreach (var user in Model.Users)
+                {
+                <p>@user.FullName</p>
+                }
+            }
+            else {
+                <p>Empty Household!</p>
+            }
+        </dd>
+        
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

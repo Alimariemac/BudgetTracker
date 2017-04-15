@@ -1,0 +1,118 @@
+﻿@model Budgeter.Models.CodeFirst.BankAccount
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>BankAccount</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Household.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Household.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Balance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Balance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reconciled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reconciled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReconciledBalance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReconciledBalance)
+        </dd>
+    </dl>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Category
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Amount
+                    </th>
+                    <th>
+                        Reconciled?
+                    </th>
+                    <th>
+                        Reconciled Amount
+                    </th>
+                    <th>
+                        Date
+                    </th>
+                </tr>
+                </thead>
+            <tbody>
+                    @if (Model.Transactions.Count != 0)
+                    {
+                        foreach (var tran in Model.Transactions)
+                        {
+                            <tr>@tran.Category
+                            </tr>
+                            <tr>
+                                @tran.Description
+                            </tr>
+                            <tr>
+                            @tran.Amount
+                             </tr>
+                            <tr>
+                                @tran.Reconciled
+                            </tr>
+                            <tr>
+                                @tran.ReconciledAmount
+                            </tr>
+                            <tr>
+                                @tran.Date
+                            </tr>
+                        }
+                    }
+                     
+                </tbody>
+         </table>
+                    
+
+    
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+@section scripts{
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });</script>
+}
