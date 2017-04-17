@@ -1,8 +1,5 @@
 ﻿using Budgeter.Models.CodeFirst;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Budgeter.Models
 {
@@ -15,12 +12,15 @@ namespace Budgeter.Models
         public string Type { get; set; }
         public bool Reconciled { get; set; }
         public decimal ReconciledAmount { get; set; }
+        public bool Deleted { get; set; }
 
         public int CategoryId { get; set; }
-        //public int CreatorUserId { get; set; }
+        public int BankAccountId { get; set; }
+        public int CreatorUserId { get; set; }
 
         public virtual Category Category { get; set; }
-        //public virtual ApplicationUser CreatorUser { get; set; }
+        public virtual BankAccount BankAccount { get; set; }
+        public virtual ApplicationUser CreatorUser { get; set; }
 
     }
 }

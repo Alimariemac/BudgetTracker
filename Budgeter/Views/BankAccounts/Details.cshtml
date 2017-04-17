@@ -74,34 +74,33 @@
                 </tr>
                 </thead>
             <tbody>
-                    @if (Model.Transactions.Count != 0)
-                    {
-                        foreach (var tran in Model.Transactions)
-                        {
-                            <tr>@tran.Category
-                            </tr>
-                            <tr>
+                        @foreach (var tran in Model.Transactions)
+                        {<tr>
+                            <td>@tran.Category.Name
+                            </td>
+                            <td>
                                 @tran.Description
-                            </tr>
-                            <tr>
+                            </td>
+                            <td>
                             @tran.Amount
-                             </tr>
-                            <tr>
+                             </td>
+                            <td>
                                 @tran.Reconciled
-                            </tr>
-                            <tr>
+                            </td>
+                            <td>
                                 @tran.ReconciledAmount
-                            </tr>
-                            <tr>
+                            </td>
+                            <td>
                                 @tran.Date
-                            </tr>
+                            </td>
+            </tr>
                         }
-                    }
+                    
                      
                 </tbody>
          </table>
                     
-
+    <a href="@Url.Action("Create", "Transactions", new {BankAccountId = Model.Id })"> Add Transaction</a>
     
 </div>
 <p>

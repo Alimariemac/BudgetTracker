@@ -18,61 +18,45 @@
             @Html.DisplayFor(model => model.Name)
         </dd>
         <dt>
-           Bank Accounts 
+            Bank Accounts
         </dt>
-
         <dd>
-            @if (Model.BankAccounts.Count != 0)
+            <a href="@Url.Action("Create", "BankAccounts", new {HouseholdId=Model.Id })">Create New Bank Account</a>
+        </dd>
+        <dd>
+            @foreach (var acct in Model.BankAccounts)
             {
-                foreach (var acc in Model.BankAccounts)
-                {
-                    <a href="@Url.Action("Details", "BankAccounts", new {id=acc.Id })"><p>@acc.Name</p></a>
-                }
+                <a href="@Url.Action("Details", "BankAccounts", new { id=acct.Id})">@acct.Name</a>
             }
-            else
-            {
-                <p>No Bank Accounts Associated</p>
-            }
-            
         </dd>
         <dt>
             Budgets
         </dt>
-
         <dd>
-            @if (Model.Budgets.Count != 0)
-            {
-                foreach (var bud in Model.Budgets)
-                {
-                <a href="@Url.Action("Details", "Budgets", new {id=bud.Id })"><p>@bud.Name</p></a>
-                }
-            }
-            else
-            {
-                <p>No Budgets Created!</p>
-            }
-            
+            <a href="@Url.Action("Create", "Budgets", new {HouseholdId = Model.Id })">Create New Budget</a>
         </dd>
-        <dt>
-            Household Members
-        </dt>
-
         <dd>
-            @if (Model.Users.Count != 0)
+            @foreach (var bud in Model.Budgets)
             {
-                foreach (var user in Model.Users)
-                {
-                <p>@user.FullName</p>
-                }
-            }
-            else {
-                <p>Empty Household!</p>
+                <a href="@Url.Action("Details", "Budgets", new { id = bud.Id })">@bud.Name</a>
             }
         </dd>
-        
+
+
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+@section scripts{
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });</script>
+}
+
+

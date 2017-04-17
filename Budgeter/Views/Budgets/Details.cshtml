@@ -1,0 +1,79 @@
+﻿@model Budgeter.Models.CodeFirst.Budget
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Budget</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Household.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Household.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dd>
+            <a href="@Url.Action("Create", "BudgetItems", new {BudgetId=Model.Id })">Create New Budget Item</a>
+        </dd>
+    </dl>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Budget Item
+                </th>
+                <th>
+                    Category
+                </th>
+                <th>
+                    Amount
+                </th>
+            </tr>
+       </thead>
+        <tbody>
+            
+            @foreach (var item in Model.BudgetItems)
+            {<tr>
+                <td>
+                   @item.Name
+                </td>
+                <td>
+                    @item.Category.Name
+                </td>
+                <td>
+                    @item.Amount
+                </td>
+              </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@section scripts{
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });</script>
+}
+
+
