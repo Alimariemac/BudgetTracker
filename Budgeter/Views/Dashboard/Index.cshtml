@@ -1,0 +1,31 @@
+﻿@model Budgeter.Models.DashboardViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Index</h2>
+@ViewBag.totalAccounts
+@foreach (var acct in Model.BankAccount)
+{
+    <p>
+        
+   @acct.Name - @acct.Balance
+   </p>
+}
+@foreach (var bud in Model.Budget)
+{
+
+    <p>
+        <ul><h2> @bud.Name</h2>
+        @foreach (var item in bud.BudgetItems)
+        {
+           <li> @item.Name - @item.Amount</li>
+
+
+        }
+</ul>
+    </p>
+}
+
+

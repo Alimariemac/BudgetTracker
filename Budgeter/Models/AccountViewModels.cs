@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Budgeter.Models.CodeFirst;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Budgeter.Models
@@ -8,6 +9,16 @@ namespace Budgeter.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+    }
+
+    public class AddUser
+    {
+        [Required]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+       
+        [Display(Name = "HouseholdId")]
+        public int HouseholdId { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -68,6 +79,14 @@ namespace Budgeter.Models
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using Budgeter.Models;
 using Budgeter.Models.CodeFirst;
+using Microsoft.Ajax.Utilities;
+using Microsoft.AspNet.Identity;
 
 namespace Budgeter.Controllers
 {
@@ -18,7 +20,20 @@ namespace Budgeter.Controllers
         // GET: BankAccounts
         public ActionResult Index()
         {
-            var bankAccounts = db.BankAccounts.Include(b => b.Household);
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var bankAccounts = db.BankAccounts.Where(b=>b.Household.Id == user.Household.Id).Include(b => b.Household);
+            decimal amount = 0;
+            foreach (var acct in bankAccounts)
+            {
+                var transactions = acct.Transactions;               
+                foreach (var tran in transactions)
+                {
+                    amount += tran.Amount;
+                };
+                acct.Balance = acct.Balance + amount;
+            }
+            
+
             return View(bankAccounts.ToList());
         }
 
@@ -34,6 +49,13 @@ namespace Budgeter.Controllers
             {
                 return HttpNotFound();
             }
+            var transactions = bankAccount.Transactions;
+            decimal amount = 0;
+            foreach (var tran in transactions)
+            {
+               amount += tran.Amount;
+            };
+            bankAccount.Balance = bankAccount.Balance + amount;
             return View(bankAccount);
         }
 
@@ -53,6 +75,9 @@ namespace Budgeter.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = db.Users.Find(User.Identity.GetUserId());
+                //bankAccount.Household = user.Household;
+                bankAccount.HouseholdId = user.Household.Id;
                 db.BankAccounts.Add(bankAccount);
                 db.SaveChanges();
                 return RedirectToAction("Index");

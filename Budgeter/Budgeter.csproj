@@ -175,6 +175,7 @@
     <Compile Include="Controllers\BankAccountsController.cs" />
     <Compile Include="Controllers\BudgetItemsController.cs" />
     <Compile Include="Controllers\BudgetsController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HouseholdsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="Models\CodeFirst\BudgetItem.cs" />
     <Compile Include="Models\CodeFirst\Category.cs" />
     <Compile Include="Models\CodeFirst\Household.cs" />
+    <Compile Include="Models\DashboardViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\CodeFirst\Transaction.cs" />
@@ -199,6 +201,17 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\calendar.css" />
+    <Content Include="Content\clndr.css" />
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\custom_1.css" />
+    <Content Include="Content\examples.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\graph.css" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\owl.carousel.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\swipebox.css" />
     <Content Include="Content\DataTables-1.9.4\docs\media\css\doc.css" />
     <Content Include="Content\DataTables-1.9.4\docs\media\css\shCore.css" />
     <Content Include="Content\DataTables-1.9.4\docs\media\css\shThemeDataTables.css" />
@@ -409,6 +422,29 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\clndr.js" />
+    <Content Include="Scripts\custom.js" />
+    <Content Include="Scripts\data.js" />
+    <Content Include="Scripts\gmaps.js" />
+    <Content Include="Scripts\jquery.calendario.js" />
+    <Content Include="Scripts\jquery.flot.js" />
+    <Content Include="Scripts\jquery.flot.pie.js" />
+    <Content Include="Scripts\jquery.flot.selection.js" />
+    <Content Include="Scripts\jquery.flot.stack.js" />
+    <Content Include="Scripts\jquery.metisMenu.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.nicescroll.js" />
+    <Content Include="Scripts\jquery.slimscroll.min.js" />
+    <Content Include="Scripts\jquery.swipebox.min.js" />
+    <Content Include="Scripts\moment-2.2.1.js" />
+    <Content Include="Scripts\owl.carousel.js" />
+    <Content Include="Scripts\pie-chart.js" />
+    <Content Include="Scripts\screenfull.js" />
+    <Content Include="Scripts\scripts.js" />
+    <Content Include="Scripts\site.js" />
+    <Content Include="Scripts\skycons.js" />
+    <Content Include="Scripts\underscore-min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -453,11 +489,6 @@
     <Content Include="Views\BankAccounts\Details.cshtml" />
     <Content Include="Views\BankAccounts\Edit.cshtml" />
     <Content Include="Views\BankAccounts\Index.cshtml" />
-    <Content Include="Views\Transactions\Create.cshtml" />
-    <Content Include="Views\Transactions\Delete.cshtml" />
-    <Content Include="Views\Transactions\Details.cshtml" />
-    <Content Include="Views\Transactions\Edit.cshtml" />
-    <Content Include="Views\Transactions\Index.cshtml" />
     <Content Include="Views\Households\Create.cshtml" />
     <Content Include="Views\Households\Delete.cshtml" />
     <Content Include="Views\Households\Details.cshtml" />
@@ -473,6 +504,13 @@
     <Content Include="Views\BudgetItems\Details.cshtml" />
     <Content Include="Views\BudgetItems\Edit.cshtml" />
     <Content Include="Views\BudgetItems\Index.cshtml" />
+    <Content Include="Views\Transactions\Create.cshtml" />
+    <Content Include="Views\Transactions\Delete.cshtml" />
+    <Content Include="Views\Transactions\Details.cshtml" />
+    <Content Include="Views\Transactions\Edit.cshtml" />
+    <Content Include="Views\Transactions\Index.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Scripts\.DS_Store" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

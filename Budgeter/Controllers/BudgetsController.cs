@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Budgeter.Models;
 using Budgeter.Models.CodeFirst;
+using Microsoft.AspNet.Identity;
 
 namespace Budgeter.Controllers
 {
@@ -18,7 +19,8 @@ namespace Budgeter.Controllers
         // GET: Budgets
         public ActionResult Index()
         {
-            var budgets = db.Budgets.Include(b => b.Household);
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var budgets = db.Budgets.Where(b=>b.Household.Id==user.Household.Id).Include(b => b.Household);
             return View(budgets.ToList());
         }
 
@@ -53,6 +55,8 @@ namespace Budgeter.Controllers
         {
             if (ModelState.IsValid)
             {
+                var user = db.Users.Find(User.Identity.GetUserId());
+                budget.HouseholdId = user.Household.Id;
                 db.Budgets.Add(budget);
                 db.SaveChanges();
                 return RedirectToAction("Index");

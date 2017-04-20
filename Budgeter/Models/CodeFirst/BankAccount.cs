@@ -17,6 +17,7 @@ namespace Budgeter.Models.CodeFirst
         public bool Reconciled { get; set; }
         public decimal ReconciledBalance { get; set; }
         public int HouseholdId { get; set; }
+        public bool Delete { get; set; }
 
         public virtual ICollection<Transaction> Transactions { get; set; }
         public virtual Household Household { get; set; }

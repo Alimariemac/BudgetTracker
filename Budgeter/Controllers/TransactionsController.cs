@@ -18,7 +18,8 @@ namespace Budgeter.Controllers
         // GET: Transactions
         public ActionResult Index()
         {
-            var transactions = db.Transactions.Include(t => t.BankAccount).Include(t => t.Category);
+            var user = db.Users.Find(User.Identity.GetUserId());
+            var transactions = db.Transactions.Where(t=>t.BankAccount.Household.Id == user.Household.Id).Include(t => t.BankAccount).Include(t => t.Category).Include(t => t.CreatorUser);
             return View(transactions.ToList());
         }
 
@@ -42,6 +43,7 @@ namespace Budgeter.Controllers
         {
             ViewBag.BankAccountId = new SelectList(db.BankAccounts, "Id", "Name");
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
+            ViewBag.CreatorUserId = new SelectList(db.Users, "Id", "FirstName");
             return View();
         }
 
@@ -54,6 +56,11 @@ namespace Budgeter.Controllers
         {
             if (ModelState.IsValid)
             {
+                var bankAccount = transaction.BankAccount;
+                if (transaction.Type == true)
+                {
+                    transaction.Amount = -1*transaction.Amount;
+                }
                 transaction.CreatorUser = db.Users.Find(User.Identity.GetUserId());
                 db.Transactions.Add(transaction);
                 db.SaveChanges();
@@ -62,6 +69,7 @@ namespace Budgeter.Controllers
 
             ViewBag.BankAccountId = new SelectList(db.BankAccounts, "Id", "Name", transaction.BankAccountId);
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
+            ViewBag.CreatorUserId = new SelectList(db.Users, "Id", "FirstName", transaction.CreatorUserId);
             return View(transaction);
         }
 
@@ -79,6 +87,7 @@ namespace Budgeter.Controllers
             }
             ViewBag.BankAccountId = new SelectList(db.BankAccounts, "Id", "Name", transaction.BankAccountId);
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
+            ViewBag.CreatorUserId = new SelectList(db.Users, "Id", "FirstName", transaction.CreatorUserId);
             return View(transaction);
         }
 
@@ -97,6 +106,7 @@ namespace Budgeter.Controllers
             }
             ViewBag.BankAccountId = new SelectList(db.BankAccounts, "Id", "Name", transaction.BankAccountId);
             ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name", transaction.CategoryId);
+            ViewBag.CreatorUserId = new SelectList(db.Users, "Id", "FirstName", transaction.CreatorUserId);
             return View(transaction);
         }
 

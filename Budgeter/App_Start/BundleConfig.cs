@@ -20,12 +20,26 @@ namespace Budgeter
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      "~/Scripts/jquery-1.10.2.js",
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                      "~/Scripts/jquery.metisMenu.js",
+                      "~/Scripts/jquery.slimscroll.min.js",
+                      "~/Scripts/screenfull.js",
+                      "~/Scripts/custom.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/calendar.css",
+                      "~/Content/clndr.css",
+                      "~/Content/custom.css",
+                      "~/Content/custom_1.css",
+                      "~/Content/font-awesome.css",
+                      "~/Content/graph.css",
+                      "~/Content/main.css",
+                      "~/Content/style.css",
+                      "~/Content/swipebox.css"));
         }
     }
 }

@@ -28,6 +28,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.CreatorUser.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatorUser.FirstName)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Description)
         </dt>
 
@@ -81,14 +89,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Deleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatorUserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatorUserId)
         </dd>
 
     </dl>
